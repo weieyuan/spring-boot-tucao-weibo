@@ -1,0 +1,22 @@
+spring:
+  application:
+    name: spring-boot-tucao
+server:
+  port: 8089
+  servlet-path: /
+
+---
+spring:
+  profiles: dev
+  h2: #默认的连接url为：jdbc:h2:mem:testdb
+    console:
+      enabled: true
+      path: /h2
+  jpa:
+    hibernate:
+      ddl-auto: create
+  dataSource:
+    initialize: false
+management:
+  security:
+    enabled: false
