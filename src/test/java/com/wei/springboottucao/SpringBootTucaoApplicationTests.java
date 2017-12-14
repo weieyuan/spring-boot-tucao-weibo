@@ -33,13 +33,7 @@ public class SpringBootTucaoApplicationTests {
 		oCard.setTime(1509526435275L);
 		oCard.setMsg("abcd");
 		
-//		RestTemplate template = new RestTemplate();
-//		HttpHeaders header = new HttpHeaders();
-//		header.setContentType(MediaType.APPLICATION_JSON);
-//		HttpEntity<Card> entity = new HttpEntity<Card>(oCard, header);
-//		
 		String url = "http://localhost:8089/card/add";
-//		String strRes = template.postForObject(url, entity, String.class);
 		
 		String strRes = ApplicationHelper.getBean(HttpUtils.class).post4Object(url, oCard, String.class);
 		
