@@ -1,5 +1,7 @@
 package com.wei.springboottucao.utils;
 
+import java.util.HashMap;
+
 import javax.annotation.PostConstruct;
 
 import org.springframework.http.HttpEntity;
@@ -26,6 +28,10 @@ public class HttpUtils {
 		T t = template.postForObject(strUrl, entity, responseClazz);
 		
 		return t;
+	}
+	
+	public <T> T post4ObjectWithoutParams(String strUrl, Class<T> responseClazz){
+		return post4Object(strUrl, new HashMap<String, String>(), responseClazz);
 	}
 	
 }

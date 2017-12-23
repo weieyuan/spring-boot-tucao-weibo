@@ -24,20 +24,8 @@ public class SpringBootTucaoApplicationTests {
 
 	@Test
 	public void cardTest(){
-		Card oCard = new Card();
-		oCard.setAnonymous(false);
-		oCard.setName("");
-		oCard.setPic("");
-		oCard.setPraiseNum(0);
-		oCard.setRemarkNum(0);
-		oCard.setTime(1509526435275L);
-		oCard.setMsg("abcd");
-		
-		String url = "http://localhost:8089/card/add";
-		
-		String strRes = ApplicationHelper.getBean(HttpUtils.class).post4Object(url, oCard, String.class);
-		
-		System.out.println(strRes);
+		CardTestProvider.addCard();
+		CardTestProvider.getCards();
 	}
 	
 }
