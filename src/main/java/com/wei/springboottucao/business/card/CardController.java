@@ -32,5 +32,10 @@ public class CardController {
 	public boolean addPraiseNum(@PathVariable(name="cardId")Long cardId){
 		return this.service.addPraiseNum(cardId);
 	}
+	
+	@RequestMapping(value="/{cardId}", method = RequestMethod.POST)
+	public Card getCardById(@PathVariable(name="cardId")Long cardId){
+		return this.service.getCardById(cardId);
+	}
 
 }

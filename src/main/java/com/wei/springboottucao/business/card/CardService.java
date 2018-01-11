@@ -53,4 +53,9 @@ public class CardService {
 		return bSuccess;
 	}
 
+	public Card getCardById(Long cardId) {
+		Card oCard = this.repository.findOne(cardId);
+		return oCard;
+	}
+
 }

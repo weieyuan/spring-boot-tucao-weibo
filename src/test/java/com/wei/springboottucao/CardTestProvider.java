@@ -9,6 +9,8 @@ import com.wei.springboottucao.entity.Card;
 import com.wei.springboottucao.helper.ApplicationHelper;
 import com.wei.springboottucao.utils.HttpUtils;
 
+import org.junit.Assert;
+
 public class CardTestProvider {
 
 	private CardTestProvider() {
@@ -36,6 +38,13 @@ public class CardTestProvider {
 		List<?> oRes = ApplicationHelper.getBean(HttpUtils.class).post4ObjectWithoutParams(strUrl, List.class);
 
 		assertEquals(oRes.size(), 1);
+	}
+	
+	public static Card getCardById(){
+		String strUrl = ConstProvider.BASE_URL + "/card/1";
+		Card oCard = ApplicationHelper.getBean(HttpUtils.class).post4ObjectWithoutParams(strUrl, Card.class);
+		Assert.assertEquals(oCard.getId(), Long.valueOf(1));
+		return oCard;
 	}
 
 }

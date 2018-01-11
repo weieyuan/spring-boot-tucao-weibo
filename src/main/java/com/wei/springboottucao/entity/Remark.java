@@ -1,18 +1,17 @@
 package com.wei.springboottucao.entity;
 
-import java.util.List;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.Type;
 
 @Entity
-@Table(name = "tbl_card")
-public class Card {
+@Table(name="tbl_remark")
+public class Remark {
 
 	@Id
 	@GeneratedValue
@@ -22,21 +21,30 @@ public class Card {
 	private boolean anonymous;
 
 	private String pic;
-
+	
 	private String name;
 
 	private long time;
-
+	
 	private long praiseNum;
-
-	private long remarkNum;
-
+	
+	private long replyNum;
+	
 	@Type(type = "text")
 	private String msg;
-
-	@OneToMany(mappedBy="card")
-	private List<Remark> remarks;
 	
+	@ManyToOne
+	@JoinColumn(name="card_id")
+	private Card card;
+
+	public Card getCard() {
+		return card;
+	}
+
+	public void setCard(Card card) {
+		this.card = card;
+	}
+
 	public Long getId() {
 		return id;
 	}
@@ -77,22 +85,6 @@ public class Card {
 		this.time = time;
 	}
 
-	public long getPraiseNum() {
-		return praiseNum;
-	}
-
-	public void setPraiseNum(long praiseNum) {
-		this.praiseNum = praiseNum;
-	}
-
-	public long getRemarkNum() {
-		return remarkNum;
-	}
-
-	public void setRemarkNum(long remarkNum) {
-		this.remarkNum = remarkNum;
-	}
-
 	public String getMsg() {
 		return msg;
 	}
@@ -101,4 +93,19 @@ public class Card {
 		this.msg = msg;
 	}
 
+	public long getPraiseNum() {
+		return praiseNum;
+	}
+
+	public void setPraiseNum(long praiseNum) {
+		this.praiseNum = praiseNum;
+	}
+
+	public long getReplyNum() {
+		return replyNum;
+	}
+
+	public void setReplyNum(long replyNum) {
+		this.replyNum = replyNum;
+	}
 }
