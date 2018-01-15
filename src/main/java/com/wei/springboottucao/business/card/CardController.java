@@ -33,7 +33,7 @@ public class CardController {
 	 * @return
 	 */
 	@RequestMapping(value = "/add", method = RequestMethod.POST)
-	public boolean addCard(@RequestBody Card card) {
+	public Card addCard(@RequestBody Card card) {
 		return this.service.addCard(card);
 	}
 	
@@ -52,7 +52,7 @@ public class CardController {
 	 * @param cardId 微博id
 	 * @return
 	 */
-	@RequestMapping(value="/{cardId}", method = RequestMethod.POST)
+	@RequestMapping(value="/get/{cardId}", method = RequestMethod.POST)
 	public Card getCardById(@PathVariable(name="cardId")Long cardId){
 		return this.service.getCardById(cardId);
 	}

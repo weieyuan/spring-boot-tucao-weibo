@@ -24,10 +24,10 @@ public class ReplyController {
 	 * @param reply
 	 * @return
 	 */
-	@RequestMapping(value="/add/{id}", method=RequestMethod.POST)
-	public Boolean addReply(@PathVariable(name="id")Long id, @RequestBody Reply reply)
+	@RequestMapping(value="/add/{remarkId}", method=RequestMethod.POST)
+	public Reply addReply(@PathVariable(name="remarkId")Long remarkId, @RequestBody Reply reply)
 	{
-		return this.service.addReply(id, reply);
+		return this.service.addReply(remarkId, reply);
 	}
 	
 	/**
@@ -35,10 +35,10 @@ public class ReplyController {
 	 * @param id 评论id
 	 * @return
 	 */
-	@RequestMapping(value="/getByRemarkId/{id}")
-	public List<Reply> getReplysByRemarkId(@PathVariable(name="id")Long id)
+	@RequestMapping(value="/getByRemarkId/{remarkId}")
+	public List<Reply> getReplysByRemarkId(@PathVariable(name="remarkId")Long remarkId)
 	{
-		return this.service.getReplysByRemarkId(id);
+		return this.service.getReplysByRemarkId(remarkId);
 	}
 	
 	/**

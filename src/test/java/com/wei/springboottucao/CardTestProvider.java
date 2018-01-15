@@ -1,15 +1,14 @@
 package com.wei.springboottucao;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
 
 import java.util.List;
+
+import org.junit.Assert;
 
 import com.wei.springboottucao.entity.Card;
 import com.wei.springboottucao.helper.ApplicationHelper;
 import com.wei.springboottucao.utils.HttpUtils;
-
-import org.junit.Assert;
 
 public class CardTestProvider {
 
@@ -28,9 +27,9 @@ public class CardTestProvider {
 		oCard.setMsg("abcd");
 
 		String strUrl = ConstProvider.BASE_URL + "/card/add";
-		Boolean strRes = ApplicationHelper.getBean(HttpUtils.class).post4Object(strUrl, oCard, Boolean.class);
+		Card oCardRes = ApplicationHelper.getBean(HttpUtils.class).post4Object(strUrl, oCard, Card.class);
 
-		assertTrue(strRes);
+		Assert.assertEquals(oCard.getTime(), oCardRes.getTime());
 	}
 
 	public static void getCards() {
@@ -41,7 +40,7 @@ public class CardTestProvider {
 	}
 	
 	public static Card getCardById(){
-		String strUrl = ConstProvider.BASE_URL + "/card/1";
+		String strUrl = ConstProvider.BASE_URL + "/card/get/1";
 		Card oCard = ApplicationHelper.getBean(HttpUtils.class).post4ObjectWithoutParams(strUrl, Card.class);
 		Assert.assertEquals(oCard.getId(), Long.valueOf(1));
 		return oCard;

@@ -23,9 +23,9 @@ public class RemarkController {
 	 * @param id 微博id
 	 * @return
 	 */
-	@RequestMapping(value = "/get/{id}", method = RequestMethod.POST)
-	public List<Remark> getRemarksByCardId(@PathVariable(name = "id") Long id) {
-		return this.service.getRemarksByCardId(id);
+	@RequestMapping(value = "/get/{cardId}", method = RequestMethod.POST)
+	public List<Remark> getRemarksByCardId(@PathVariable(name = "cardId") Long cardId) {
+		return this.service.getRemarksByCardId(cardId);
 	}
 
 	/**
@@ -35,9 +35,8 @@ public class RemarkController {
 	 * @return
 	 */
 	@RequestMapping(value = "/add/{cardId}", method = RequestMethod.POST)
-	public Boolean addRemark(@PathVariable(name = "cardId") Long cardId, @RequestBody Remark oRemark) {
-		Boolean b = this.service.addRemark(cardId, oRemark);
-		return b;
+	public Remark addRemark(@PathVariable(name = "cardId") Long cardId, @RequestBody Remark oRemark) {
+		return this.service.addRemark(cardId, oRemark);
 	}
 	
 	/**

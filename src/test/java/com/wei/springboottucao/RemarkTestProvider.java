@@ -26,9 +26,9 @@ public class RemarkTestProvider {
 
 		String strUrl = ConstProvider.BASE_URL + "/remark/add/1";
 
-		Boolean b = ApplicationHelper.getBean(HttpUtils.class).post4Object(strUrl, oRemark, Boolean.class);
+		Remark oRemarkRes = ApplicationHelper.getBean(HttpUtils.class).post4Object(strUrl, oRemark, Remark.class);
 
-		Assert.assertTrue(b);
+		Assert.assertEquals(oRemark.getTime(), oRemarkRes.getTime());
 	}
 
 	public static void getReamrkByCardId() {

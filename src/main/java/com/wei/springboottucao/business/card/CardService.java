@@ -18,14 +18,9 @@ public class CardService {
 	@Autowired
 	private CardRepository repository;
 
-	public boolean addCard(Card card) {
-		boolean success = true;
-		try {
-			this.repository.save(card);
-		} catch (Exception e) {
-			success = false;
-		}
-		return success;
+	public Card addCard(Card card) {
+		Card oCardRes = this.repository.save(card);
+		return oCardRes;
 	}
 
 	public List<Card> getCards() {

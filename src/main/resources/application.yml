@@ -3,7 +3,7 @@ spring:
     name: spring-boot-tucao
 server:
   port: 8089
-  servlet-path: /
+  servlet-path: /tucao
 
 ---
 spring:

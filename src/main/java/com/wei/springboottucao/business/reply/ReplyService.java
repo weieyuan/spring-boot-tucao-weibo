@@ -20,30 +20,22 @@ public class ReplyService {
 	@Autowired
 	private RemarkRepository remarkRepository;
 
-	public List<Reply> getReplysByRemarkId(Long id) {
+	public List<Reply> getReplysByRemarkId(Long remarkId) {
 
-		List<Reply> lst = this.repository.findByRemarkId(id);
+		List<Reply> lst = this.repository.findByRemarkId(remarkId);
 
 		return lst;
 	}
 
 	@Transactional
-	public Boolean addReply(Long id, Reply oReply) {
-		Boolean success = true;
-		try {
-			Remark oRemark = this.remarkRepository.findOne(id);
-			oRemark.setReplyNum(oRemark.getReplyNum() + 1);
-			this.remarkRepository.save(oRemark);
-			
-			oReply.setRemark(oRemark);
-			this.repository.save(oReply);
-
-		} 
-		catch (Exception e) {
-			success = false;
-		}
-
-		return success;
+	public Reply addReply(Long remarkId, Reply oReply) {
+		Remark oRemark = this.remarkRepository.findOne(remarkId);
+		oRemark.setReplyNum(oRemark.getReplyNum() + 1);
+		this.remarkRepository.save(oRemark);
+		
+		oReply.setRemark(oRemark);
+		Reply oReplyRes = this.repository.save(oReply);
+		return oReplyRes; 
 	}
 
 	public Boolean addPraiseNum(Long id) {

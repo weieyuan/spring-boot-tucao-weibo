@@ -25,10 +25,9 @@ public class ReplyTestProvider {
 		
 		String strUrl = ConstProvider.BASE_URL + "/reply/add/1";
 		
-		Boolean b = ApplicationHelper.getBean(HttpUtils.class).post4Object(strUrl, oReply, Boolean.class);
+		Reply oReplyRes = ApplicationHelper.getBean(HttpUtils.class).post4Object(strUrl, oReply, Reply.class);
 		
-		Assert.assertTrue(b);
-		
+		Assert.assertEquals(oReply.getTime(), oReplyRes.getTime());
 	}
 
 	public static void getReplyByRemarkId() {

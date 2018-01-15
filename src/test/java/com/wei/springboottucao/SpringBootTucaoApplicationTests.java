@@ -36,7 +36,6 @@ public class SpringBootTucaoApplicationTests {
 		ReplyTestProvider.addReply();
 		ReplyTestProvider.getReplyByRemarkId();
 		ReplyTestProvider.addPriseNum();
-		
 	}
 	
 }
