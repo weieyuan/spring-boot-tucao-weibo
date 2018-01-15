@@ -18,21 +18,40 @@ public class CardController {
 	@Autowired
 	private CardService service;
 
+	/**
+	 * 获取所有的微博
+	 * @return
+	 */
 	@RequestMapping(value = "/getAll", method = RequestMethod.POST)
 	public List<Card> getCards() {
 		return this.service.getCards();
 	}
 
+	/**
+	 * 添加一条微博
+	 * @param card
+	 * @return
+	 */
 	@RequestMapping(value = "/add", method = RequestMethod.POST)
 	public boolean addCard(@RequestBody Card card) {
 		return this.service.addCard(card);
 	}
 	
+	/**
+	 * 某条微博的喜爱数加1
+	 * @param cardId 微博id
+	 * @return
+	 */
 	@RequestMapping(value="/praise/{cardId}", method = RequestMethod.POST)
 	public boolean addPraiseNum(@PathVariable(name="cardId")Long cardId){
 		return this.service.addPraiseNum(cardId);
 	}
 	
+	/**
+	 * 获取微博
+	 * @param cardId 微博id
+	 * @return
+	 */
 	@RequestMapping(value="/{cardId}", method = RequestMethod.POST)
 	public Card getCardById(@PathVariable(name="cardId")Long cardId){
 		return this.service.getCardById(cardId);

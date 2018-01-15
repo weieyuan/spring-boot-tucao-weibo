@@ -1,11 +1,8 @@
 package com.wei.springboottucao.entity;
 
-import java.util.List;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.Type;
@@ -34,8 +31,8 @@ public class Card {
 	@Type(type = "text")
 	private String msg;
 
-	@OneToMany(mappedBy="card")
-	private List<Remark> remarks;
+//	@OneToMany(mappedBy="card")
+//	private List<Remark> remarks;
 	
 	public Long getId() {
 		return id;

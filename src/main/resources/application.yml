@@ -8,7 +8,7 @@ server:
 ---
 spring:
   profiles: dev
-  h2: #默认的连接url为：jdbc:h2:mem:testdb
+  h2: #默认的连接url为：jdbc:h2:mem:testdb #访问地址http://localhost:8089/h2/login.jsp
     console:
       enabled: true
       path: /h2

@@ -10,8 +10,8 @@ import javax.persistence.Table;
 import org.hibernate.annotations.Type;
 
 @Entity
-@Table(name="tbl_remark")
-public class Remark {
+@Table(name = "tbl_reply")
+public class Reply {
 
 	@Id
 	@GeneratedValue
@@ -28,32 +28,19 @@ public class Remark {
 	
 	private long praiseNum;
 	
-	private long replyNum;
-	
-	@Type(type = "text")
+	@Type(type="text")
 	private String msg;
 	
 	@ManyToOne
-	@JoinColumn(name="card_id")
-	private Card card;
-	
-//	@OneToMany(mappedBy="remark")
-//	private List<Reply> replys;
+	@JoinColumn(name="remark_id")
+	private Remark remark;
 
-//	public List<Reply> getReplys() {
-//		return replys;
-//	}
-//
-//	public void setReplys(List<Reply> replys) {
-//		this.replys = replys;
-//	}
-
-	public Card getCard() {
-		return card;
+	public Remark getRemark() {
+		return remark;
 	}
 
-	public void setCard(Card card) {
-		this.card = card;
+	public void setRemark(Remark remark) {
+		this.remark = remark;
 	}
 
 	public Long getId() {
@@ -96,14 +83,6 @@ public class Remark {
 		this.time = time;
 	}
 
-	public String getMsg() {
-		return msg;
-	}
-
-	public void setMsg(String msg) {
-		this.msg = msg;
-	}
-
 	public long getPraiseNum() {
 		return praiseNum;
 	}
@@ -112,11 +91,12 @@ public class Remark {
 		this.praiseNum = praiseNum;
 	}
 
-	public long getReplyNum() {
-		return replyNum;
+	public String getMsg() {
+		return msg;
 	}
 
-	public void setReplyNum(long replyNum) {
-		this.replyNum = replyNum;
+	public void setMsg(String msg) {
+		this.msg = msg;
 	}
+
 }

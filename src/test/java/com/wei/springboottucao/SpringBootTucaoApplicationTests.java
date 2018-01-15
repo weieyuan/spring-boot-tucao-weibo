@@ -26,6 +26,17 @@ public class SpringBootTucaoApplicationTests {
 		CardTestProvider.addCard();
 		RemarkTestProvider.addRemark();
 		RemarkTestProvider.getReamrkByCardId();
+		RemarkTestProvider.addPriseNum();
+	}
+	
+	@Test
+	public void replyTest(){
+		CardTestProvider.addCard();
+		RemarkTestProvider.addRemark();
+		ReplyTestProvider.addReply();
+		ReplyTestProvider.getReplyByRemarkId();
+		ReplyTestProvider.addPriseNum();
+		
 	}
 	
 }
