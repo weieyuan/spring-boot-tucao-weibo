@@ -1,7 +1,5 @@
 package com.wei.springboottucao.business.card;
 
-import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 import javax.transaction.Transactional;
@@ -24,12 +22,14 @@ public class CardService {
 	}
 
 	public List<Card> getCards() {
-		Iterable<Card> ite = this.repository.findAll();
-		Iterator<Card> iterator = ite.iterator();
-		List<Card> lst = new ArrayList<Card>();
-		while (iterator.hasNext()) {
-			lst.add(iterator.next());
-		}
+//		Iterable<Card> ite = this.repository.findAll();
+//		Iterator<Card> iterator = ite.iterator();
+//		List<Card> lst = new ArrayList<Card>();
+//		while (iterator.hasNext()) {
+//			lst.add(iterator.next());
+//		}
+		List<Card> lst = this.repository.findAllByOrderByTimeDesc();
+		
 		return lst;
 	}
 
