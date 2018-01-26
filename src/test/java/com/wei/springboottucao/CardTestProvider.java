@@ -26,7 +26,7 @@ public class CardTestProvider {
 		oCard.setTime(1509526435275L);
 		oCard.setMsg("abcd");
 
-		String strUrl = ConstProvider.BASE_URL + "/card/add";
+		String strUrl = ConstProvider.BASE_URL + "/card/add/clientId";
 		Card oCardRes = ApplicationHelper.getBean(HttpUtils.class).post4Object(strUrl, oCard, Card.class);
 
 		Assert.assertEquals(oCard.getTime(), oCardRes.getTime());

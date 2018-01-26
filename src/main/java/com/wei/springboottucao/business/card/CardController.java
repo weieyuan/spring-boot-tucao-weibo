@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.wei.springboottucao.entity.Card;
+import com.wei.springboottucao.vo.card.CardNewMsgVo;
 
 @RestController
 @RequestMapping(value = "/card")
@@ -20,6 +21,7 @@ public class CardController {
 
 	/**
 	 * 获取所有的微博
+	 * 
 	 * @return
 	 */
 	@RequestMapping(value = "/getAll", method = RequestMethod.POST)
@@ -29,32 +31,42 @@ public class CardController {
 
 	/**
 	 * 添加一条微博
+	 * 
 	 * @param card
 	 * @return
 	 */
-	@RequestMapping(value = "/add", method = RequestMethod.POST)
-	public Card addCard(@RequestBody Card card) {
-		return this.service.addCard(card);
+	@RequestMapping(value = "/add/{clientId}", method = RequestMethod.POST)
+	public Card addCard(@PathVariable(name="clientId") String clientId, @RequestBody Card card) {
+		return this.service.addCard(clientId, card);
 	}
-	
+
 	/**
 	 * 某条微博的喜爱数加1
-	 * @param cardId 微博id
+	 * 
+	 * @param cardId
+	 *            微博id
 	 * @return
 	 */
-	@RequestMapping(value="/praise/{cardId}", method = RequestMethod.POST)
-	public boolean addPraiseNum(@PathVariable(name="cardId")Long cardId){
+	@RequestMapping(value = "/praise/{cardId}", method = RequestMethod.POST)
+	public boolean addPraiseNum(@PathVariable(name = "cardId") Long cardId) {
 		return this.service.addPraiseNum(cardId);
 	}
-	
+
 	/**
 	 * 获取微博
-	 * @param cardId 微博id
+	 * 
+	 * @param cardId
+	 *            微博id
 	 * @return
 	 */
-	@RequestMapping(value="/get/{cardId}", method = RequestMethod.POST)
-	public Card getCardById(@PathVariable(name="cardId")Long cardId){
+	@RequestMapping(value = "/get/{cardId}", method = RequestMethod.POST)
+	public Card getCardById(@PathVariable(name = "cardId") Long cardId) {
 		return this.service.getCardById(cardId);
+	}
+
+	@RequestMapping(value = "/newMsg", method = RequestMethod.POST)
+	public List<Card> getNewCards(@RequestBody CardNewMsgVo oCardNewMsgVo) {
+		return this.service.getNewCards(oCardNewMsgVo);
 	}
 
 }

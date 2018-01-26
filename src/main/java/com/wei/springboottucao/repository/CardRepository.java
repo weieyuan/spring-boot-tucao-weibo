@@ -10,6 +10,8 @@ import com.wei.springboottucao.entity.Card;
 @Transactional(readOnly=true)
 public interface CardRepository extends CrudRepository<Card, Long> {
 
-	List<Card> findAllByOrderByTimeDesc();
+	List<Card> findAllByOrderByIdDesc();
+	
+	List<Card> findByIdGreaterThanOrderByIdDesc(Long cardId);
 	
 }

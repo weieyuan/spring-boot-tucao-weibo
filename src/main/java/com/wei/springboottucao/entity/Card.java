@@ -15,6 +15,7 @@ import org.springframework.data.annotation.CreatedBy;
 import org.springframework.data.annotation.LastModifiedBy;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
+import com.wei.springboottucao.cache.GlobalCache;
 import com.wei.springboottucao.helper.ApplicationHelper;
 import com.wei.springboottucao.stomp.StompService;
 
@@ -57,8 +58,9 @@ public class Card {
 	@PostPersist
 	public void postInsert(){
 		Map<String, Object> params = new HashMap<String, Object>();
-		params.put("success", true);
-		params.put("count", 10);
+		params.put("newMsg", true);
+		params.put("cardId", this.id);
+		params.put("clientId", GlobalCache.getInstance().getCache().getClientId());
 		ApplicationHelper.getBean(StompService.class).sendMsg("/card/newMsg", params);
 	}
 	
