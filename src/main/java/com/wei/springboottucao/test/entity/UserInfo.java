@@ -1,4 +1,4 @@
-package com.wei.springboottucao.test;
+package com.wei.springboottucao.test.entity;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

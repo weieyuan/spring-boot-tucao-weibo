@@ -38,4 +38,9 @@ public class SpringBootTucaoApplicationTests {
 		ReplyTestProvider.addPriseNum();
 	}
 	
+	@Test
+	public void testHibernate(){
+		HibernateTest.test();
+	}
+	
 }

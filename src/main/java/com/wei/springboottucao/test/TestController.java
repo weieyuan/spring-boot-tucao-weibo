@@ -6,6 +6,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.wei.springboottucao.test.entity.UserInfo;
+import com.wei.springboottucao.test.repository.UserInfoRepository;
+
 @RestController
 @Profile("dev")
 public class TestController {
